@@ -72,47 +72,47 @@ describe Student do
   end
 
   describe 'retrieving data from the db' do
-    describe '.find_by_name' do
+    # describe '.find_by_name' do
 
-      it 'returns an instance of student that matches the name from the DB' do
-        pat.name = "Pat"
-        pat.grade = 12
-        pat.save
+    #   it 'returns an instance of student that matches the name from the DB' do
+    #     pat.name = "Pat"
+    #     pat.grade = 12
+    #     pat.save
 
-        pat_from_db = Student.find_by_name("Pat")
-        expect(pat_from_db.name).to eq("Pat")
-        expect(pat_from_db).to be_an_instance_of(Student)
-      end
-    end
+    #     pat_from_db = Student.find_by_name("Pat")
+    #     expect(pat_from_db.name).to eq("Pat")
+    #     expect(pat_from_db).to be_an_instance_of(Student)
+    #   end
+    # end
 
-    describe '.all_students_in_grade_9' do
-      it 'returns an array of all students in grades 9' do
-        pat.name = "Pat"
-        pat.grade = 12
-        pat.save
-        sam.name = "Sam"
-        sam.grade = 9
-        sam.save
+    # describe '.all_students_in_grade_9' do
+    #   it 'returns an array of all students in grades 9' do
+    #     pat.name = "Pat"
+    #     pat.grade = 12
+    #     pat.save
+    #     sam.name = "Sam"
+    #     sam.grade = 9
+    #     sam.save
 
-        all_in_9 = Student.all_students_in_grade_9
-        expect(all_in_9.size).to eq(1)
-      end
-    end
+    #     all_in_9 = Student.all_students_in_grade_9
+    #     expect(all_in_9.size).to eq(1)
+    #   end
+    # end
 
-    describe '.students_below_12th_grade' do
-      it 'returns an array of all students in grades 11 or below' do
-        pat.name = "Pat"
-        pat.grade = 12
-        pat.save
-        sam.name = "Sam"
-        sam.grade = 10
-        sam.save
+    # describe '.students_below_12th_grade' do
+    #   it 'returns an array of all students in grades 11 or below' do
+    #     pat.name = "Pat"
+    #     pat.grade = 12
+    #     pat.save
+    #     sam.name = "Sam"
+    #     sam.grade = 10
+    #     sam.save
 
-        all_but_12th = Student.students_below_12th_grade
-        expect(all_but_12th.size).to eq(1)
-        expect(all_but_12th.first.name).to eq('Sam')
-      end
-    end
+    #     all_but_12th = Student.students_below_12th_grade
+    #     expect(all_but_12th.size).to eq(1)
+    #     expect(all_but_12th.first.name).to eq('Sam')
+    #   end
+    # end
 
     describe '.all' do
       it 'returns all student instances from the db' do
@@ -130,66 +130,66 @@ describe Student do
       end
     end
 
-    describe '.first_X_students_in_grade_10' do
-      it 'returns an array of the first X students in grade 10' do
+    # describe '.first_X_students_in_grade_10' do
+    #   it 'returns an array of the first X students in grade 10' do
 
-        pat.name = "Pat"
-        pat.grade = 10
-        pat.save
-        sam.name = "Sam"
-        sam.grade = 10
-        sam.save
-        jess.name = "Jess"
-        jess.grade = 10
-        jess.save
+    #     pat.name = "Pat"
+    #     pat.grade = 10
+    #     pat.save
+    #     sam.name = "Sam"
+    #     sam.grade = 10
+    #     sam.save
+    #     jess.name = "Jess"
+    #     jess.grade = 10
+    #     jess.save
         
-        first_X_students = Student.first_X_students_in_grade_10(2)
-        expect(first_X_students.size).to eq(2), 'Requested first 2 students in grade 10. Expected Array of two elements'
-        expect(first_X_students.all? {|student| student.class == Student}).to eq(true), 'Expected Array of Student instances'
-        first_X_students = Student.first_X_students_in_grade_10(3)
-        expect(first_X_students.size).to eq(3), 'Requested first 3 students in grade 10. Expected Array of three elements'
-        expect(first_X_students.all? {|student| student.class == Student}).to eq(true), 'Expected Array of Student instances'
-      end
-    end
+    #     first_X_students = Student.first_X_students_in_grade_10(2)
+    #     expect(first_X_students.size).to eq(2), 'Requested first 2 students in grade 10. Expected Array of two elements'
+    #     expect(first_X_students.all? {|student| student.class == Student}).to eq(true), 'Expected Array of Student instances'
+    #     first_X_students = Student.first_X_students_in_grade_10(3)
+    #     expect(first_X_students.size).to eq(3), 'Requested first 3 students in grade 10. Expected Array of three elements'
+    #     expect(first_X_students.all? {|student| student.class == Student}).to eq(true), 'Expected Array of Student instances'
+    #   end
+    # end
 
-    describe '.first_student_in_grade_10' do
-      it 'returns the first student in grade 10' do
-        pat.name = "Pat"
-        pat.grade = 12
-        pat.id = 1
-        pat.save
+    # describe '.first_student_in_grade_10' do
+    #   it 'returns the first student in grade 10' do
+    #     pat.name = "Pat"
+    #     pat.grade = 12
+    #     pat.id = 1
+    #     pat.save
 
-        sam.name = "Sam"
-        sam.grade = 10
-        sam.id = 2
-        sam.save
+    #     sam.name = "Sam"
+    #     sam.grade = 10
+    #     sam.id = 2
+    #     sam.save
 
-        jess.name = "Jess"
-        jess.grade = 10
-        jess.id = 3
-        jess.save
+    #     jess.name = "Jess"
+    #     jess.grade = 10
+    #     jess.id = 3
+    #     jess.save
 
-        first_student = Student.first_student_in_grade_10
-        expect(first_student.id).to eq(2)
-        expect(first_student.name).to eq("Sam")
-      end
-    end
+    #     first_student = Student.first_student_in_grade_10
+    #     expect(first_student.id).to eq(2)
+    #     expect(first_student.name).to eq("Sam")
+    #   end
+    # end
 
-    describe '.all_students_in_grade_X' do
-      it 'returns an array of all students in a given grade X' do
-        pat.name = "Pat"
-        pat.grade = 10
-        pat.save
-        sam.name = "Sam"
-        sam.grade = 10
-        sam.save
-        jess.name = "Jess"
-        jess.grade = 10
-        jess.save
+    # describe '.all_students_in_grade_X' do
+    #   it 'returns an array of all students in a given grade X' do
+    #     pat.name = "Pat"
+    #     pat.grade = 10
+    #     pat.save
+    #     sam.name = "Sam"
+    #     sam.grade = 10
+    #     sam.save
+    #     jess.name = "Jess"
+    #     jess.grade = 10
+    #     jess.save
 
-        tenth_grade = Student.all_students_in_grade_X(10)
-        expect(tenth_grade.size).to eq(3)
-      end
-    end
+    #     tenth_grade = Student.all_students_in_grade_X(10)
+    #     expect(tenth_grade.size).to eq(3)
+    #   end
+    # end
   end
 end
